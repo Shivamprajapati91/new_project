@@ -9,7 +9,10 @@ const CategoryList = () => {
     const categoryLoading = new Array(13).fill(null)
 
     const fetchCategoryProduct = async()=>{
-        const response = await fetch(SummaryApi.categoryProduct.url)
+        const response = await fetch(SummaryApi.categoryProduct.url,{
+            method: SummaryApi.categoryProduct.method,
+            Credentials: 'include'
+        })
         const dataResponse = await response.json()
 
 
