@@ -6,6 +6,7 @@ const fetchCategoryWiseProduct = async(category)=>{
         headers: {
             "content-type": "application/json"
         },
+        credentials: 'include',
         body: JSON.stringify({
             category: category
         })
