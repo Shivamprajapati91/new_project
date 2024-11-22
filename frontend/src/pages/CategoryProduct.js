@@ -30,6 +30,7 @@ const CategoryProduct = () => {
     const fetchData = async()=>{
       const response = await fetch(SummaryApi.filterProduct.url,{
         method: SummaryApi.filterProduct.method,
+          mode: 'no-cors',
         headers : {
           "content-type": "application/json"
         },
