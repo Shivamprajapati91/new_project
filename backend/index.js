@@ -10,9 +10,14 @@ const app = express()
 app.use(cors(
     {
         origin : process.env.FRONTEND_URL,
-        credentials : true 
+        credentials : true ,
+          methods: ['GET', 'POST', 'OPTIONS'], // Ensure OPTIONS method is allowed
+       allowedHeaders: ['Content-Type'],
     }
 ))
+app.options('*', (req, res) => {
+  res.sendStatus(200); // Respond with HTTP 200 status
+});
 app.use(express.json())
 app.use(cookieParser())
 app.use("/api",router)
