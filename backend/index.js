@@ -25,7 +25,8 @@ app.use(cors({
 app.options('*', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://new-project-v4rxoycqg-shivam-prajapatis-projects-f51bb9db.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.status(200).end();  // Respond with HTTP 200 OK
 });
 app.use(express.json())
