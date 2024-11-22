@@ -6,6 +6,7 @@ const router = require('./routes')
 const cookieParser = require('cookie-parser')
 
 const app = express()
+const allowedOrigins = ['https://new-project-lemon-three.vercel.app'];
 
 app.use(cors({
   origin: (origin, callback) => {
