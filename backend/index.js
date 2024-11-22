@@ -7,16 +7,24 @@ const cookieParser = require('cookie-parser')
 
 const app = express()
 
-app.use(cors(
-    {
-        origin : process.env.FRONTEND_URL,
-        credentials : true ,
-          methods: ['GET', 'POST', 'OPTIONS'], // Ensure OPTIONS method is allowed
-       allowedHeaders: ['Content-Type'],
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
     }
-))
+  },
+  methods: ['GET', 'POST', 'OPTIONS'], // Allow OPTIONS (preflight)
+  allowedHeaders: ['Content-Type'],
+}));
+
+// Handle the OPTIONS request
 app.options('*', (req, res) => {
-  res.sendStatus(200); // Respond with HTTP 200 status
+    res.setHeader('Access-Control-Allow-Origin', 'https://new-project-v4rxoycqg-shivam-prajapatis-projects-f51bb9db.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.status(200).end();  // Respond with HTTP 200 OK
 });
 app.use(express.json())
 app.use(cookieParser())
