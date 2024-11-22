@@ -17,7 +17,8 @@ app.use(cors({
     }
   },
   methods: ['GET', 'POST', 'OPTIONS'], // Allow OPTIONS (preflight)
-  allowedHeaders: ['Content-Type'],
+   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
 
 // Handle the OPTIONS request
